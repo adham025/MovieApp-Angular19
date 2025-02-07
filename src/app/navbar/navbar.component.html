@@ -1,1 +1,43 @@
-<p>navbar works!</p>
+<nav class="navbar navbar-expand">
+  <div class="container-fluid mx-3">
+    <span class="navbar-brand pointer" routerLink="movies">Movie App</span>
+    <div
+      class="collapse navbar-collapse justify-content-end"
+      id="navbarNavAltMarkup"
+    >
+      <div class="navbar-nav">
+        <a class="nav-link pointer" routerLink="movies">Home</a>
+        <a class="nav-link pointer" routerLink="/login">Login</a>
+        <a class="nav-link pointer" routerLink="/registration">Register</a>
+        <div
+          class="btn-group"
+          role="group"
+          aria-label="Button group with nested dropdown"
+        >
+          <div class="btn-group" role="group">
+            <button
+              id="btnGroupDrop1"
+              type="button"
+              class="btn dropdown-toggle"
+              data-bs-toggle="dropdown"
+              aria-expanded="false"
+            >
+              En
+            </button>
+            <ul class="dropdown-menu" aria-labelledby="btnGroupDrop1">
+              <li><a class="dropdown-item" href="#">Ar</a></li>
+              <li><a class="dropdown-item" href="#">Fr</a></li>
+            </ul>
+          </div>
+        </div>
+        <a
+          class="nav-link d-flex align-items-center pointer"
+          routerLink="/wishlist"
+        >
+          <i class="fa-solid fa-heart me-2"></i>
+          Watchlist
+        </a>
+      </div>
+    </div>
+  </div>
+</nav>
