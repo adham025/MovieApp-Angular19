@@ -18,14 +18,14 @@ export class CrudRequestService {
     );
   }
 
-  getMovieDetails(id: string ) {
+  getMovieDetails(id: number ) {
     const language = this.langService.getLanguage();
     return this.http.get(
       `https://api.themoviedb.org/3/movie/${id}?api_key=${environment.apiKey}&language=${language}`
     );
   }
 
-  getMovieRecommendations(movie_id: string) {
+  getMovieRecommendations(movie_id: number) {
     const language = this.langService.getLanguage();
     return this.http.get(
       `https://api.themoviedb.org/3/movie/${movie_id}/recommendations?api_key=${environment.apiKey}&language=${language}`
