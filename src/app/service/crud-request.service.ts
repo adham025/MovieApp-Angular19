@@ -9,25 +9,26 @@ import { environment } from '../../environments/environment';
 })
 export class CrudRequestService {
 
-  constructor(private http:HttpClient) { }
+  constructor(private http: HttpClient, private langService: AccLangService) {}
 
-  getMoviesList(): Observable<any>{
-    return this.http.get(`https://api.themoviedb.org/3/movie/now_playing?api_key=${environment.apiKey}`)
+  getMoviesListByPagination(page: number): Observable<any> {
+    const language = this.langService.getLanguage();
+    return this.http.get(
+      `https://api.themoviedb.org/3/movie/now_playing?api_key=${environment.apiKey}&page=${page}&language=${language}`
+    );
   }
 
-  getMovieDetails(id: string) {
+  getMovieDetails(id: string ) {
+    const language = this.langService.getLanguage();
     return this.http.get(
-      `https://api.themoviedb.org/3/movie/${id}?api_key=${
-        environment.apiKey
-      }${this.getLanguageParam()}`
+      `https://api.themoviedb.org/3/movie/${id}?api_key=${environment.apiKey}&language=${language}`
     );
   }
 
   getMovieRecommendations(movie_id: string) {
+    const language = this.langService.getLanguage();
     return this.http.get(
-      `https://api.themoviedb.org/3/movie/${movie_id}/recommendations?api_key=${
-        environment.apiKey
-      }${this.getLanguageParam()}`
+      `https://api.themoviedb.org/3/movie/${movie_id}/recommendations?api_key=${environment.apiKey}&language=${language}`
     );
   }
 }
