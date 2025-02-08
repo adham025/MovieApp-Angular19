@@ -8,21 +8,11 @@ import { environment } from '../../environments/environment';
   providedIn: 'root',
 })
 export class CrudRequestService {
-  constructor(
-    private http: HttpClient,
-    private AccLangService: AccLangService
-  ) {}
 
-  private getLanguageParam(): string {
-    return `&language=${this.AccLangService.getLanguage()}`;
-  }
+  constructor(private http:HttpClient) { }
 
-  getMoviesList(): Observable<any> {
-    return this.http.get(
-      `https://api.themoviedb.org/3/movie/now_playing?api_key=${
-        environment.apiKey
-      }${this.getLanguageParam()}`
-    );
+  getMoviesList(): Observable<any>{
+    return this.http.get(`https://api.themoviedb.org/3/movie/now_playing?api_key=${environment.apiKey}`)
   }
 
   getMovieDetails(id: string) {
