@@ -9,11 +9,7 @@
         <a class="nav-link pointer" routerLink="movies">Home</a>
         <a class="nav-link pointer" routerLink="/login">Login</a>
         <a class="nav-link pointer" routerLink="/registration">Register</a>
-        <div
-          class="btn-group"
-          role="group"
-          aria-label="Button group with nested dropdown"
-        >
+        <div class="btn-group" role="group" aria-label="Language selection">
           <div class="btn-group" role="group">
             <button
               id="btnGroupDrop1"
@@ -22,14 +18,33 @@
               data-bs-toggle="dropdown"
               aria-expanded="false"
             >
-              En
+              {{ selectedLanguage }}
             </button>
             <ul class="dropdown-menu" aria-labelledby="btnGroupDrop1">
-              <li><a class="dropdown-item" href="#">Ar</a></li>
-              <li><a class="dropdown-item" href="#">Fr</a></li>
+              <li>
+                <a class="dropdown-item" href="#" (click)="changeLanguage('en')"
+                  >English</a
+                >
+              </li>
+              <li>
+                <a class="dropdown-item" href="#" (click)="changeLanguage('ar')"
+                  >العربية</a
+                >
+              </li>
+              <li>
+                <a class="dropdown-item" href="#" (click)="changeLanguage('fr')"
+                  >Français</a
+                >
+              </li>
+              <li>
+                <a class="dropdown-item" href="#" (click)="changeLanguage('zh')"
+                  >中文</a
+                >
+              </li>
             </ul>
           </div>
         </div>
+
         <a
           class="nav-link d-flex align-items-center pointer"
           routerLink="/wishlist"
