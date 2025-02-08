@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { Router, RouterLink } from '@angular/router';
+import { SearchServiceService } from '../../service/search-service.service';
 
 @Component({
   selector: 'app-hero-section',
@@ -12,14 +13,14 @@ import { Router, RouterLink } from '@angular/router';
 
 export class HeroSectionComponent {
   searchKey: string = '';
+
   constructor(private router: Router) {}
 
-
-  searchMovies(): void {
-    if (this.searchKey.trim()) {
-      this.router.navigate(['/search'], { queryParams: { searchKey: this.searchKey } });
-    console.log('Searching for:', this.searchKey);
+  searchMovies() {
+    if (!this.searchKey.trim()) {
+      alert('Please enter a movie.');
+    } else {
+      this.router.navigate(['/search', this.searchKey]);
     }
   }
 }
-

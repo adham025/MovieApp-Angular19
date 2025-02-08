@@ -4,13 +4,16 @@
     Millions of movies, TV shows and people to discover. Explore now.
   </p>
   <div class="d-flex flex-column flex-sm-row align-items-stretch gap-2">
-    <input
+    <!-- <input
       class="form-control text-black-50"
       placeholder="Search and explore...."
       [(ngModel)]="searchKey"
     />
     <button class="btn btn-primary mx-3" [routerLink]="['/search', searchKey]">
       Search
-    </button>
+    </button> -->
+
+    <input [(ngModel)]="searchKey" class="form-control text-black-50" placeholder="Search for a movie">
+    <button class="btn btn-primary mx-3" (click)="searchMovies()">Search</button>
   </div>
 </div>
