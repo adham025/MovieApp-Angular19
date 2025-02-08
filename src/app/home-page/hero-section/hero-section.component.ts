@@ -5,7 +5,7 @@ import { SearchServiceService } from '../../service/search-service.service';
 
 @Component({
   selector: 'app-hero-section',
-  imports: [FormsModule, RouterLink],
+  imports: [FormsModule],
 
   templateUrl: './hero-section.component.html',
   styleUrl: './hero-section.component.css'

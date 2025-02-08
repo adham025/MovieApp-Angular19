@@ -1,3 +1,4 @@
+import { AddToWishlistService } from './../../service/add-to-wishlist.service';
 import { Component } from '@angular/core';
 import { CrudRequestService } from '../../service/crud-request.service';
 import { RouterModule } from '@angular/router';
@@ -21,7 +22,7 @@ export class MoviesListComponent {
   startIndex = 0;
   visiblePages: number[] = [];
 
-  constructor(private _crudService: CrudRequestService) {}
+  constructor(private _crudService: CrudRequestService,private wishlistService: AddToWishlistService) {}
 
   ngOnInit() {
     this.loadMovies(this.currentPage);
@@ -70,4 +71,20 @@ export class MoviesListComponent {
   trackByFn(index: number, movie: any): number {
     return movie.id;
   }
+
+  toggleWishlist(movie: any, event: Event): void {
+    event.preventDefault();
+    if (this.isInWishlist(movie.id)) {
+      this.wishlistService.removeFromWishlist(movie.id);
+    } else {
+      this.wishlistService.addToWishlist(movie);
+    }
+  }
+
+
+  isInWishlist(movieId: number): boolean {
+    return this.wishlistService.isInWishlist(movieId);
+  }
+
+
 }

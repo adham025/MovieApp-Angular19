@@ -25,7 +25,13 @@
             </p>
           </div>
           <div>
-            <i class="fa-regular fa-heart fa-xl mt-5" style="color: black"></i>
+            <i 
+              class="fa-heart fa-xl mt-5 pointer" 
+              [class.fa-regular]="!isInWishlist(movie.id)"
+              [class.fa-solid]="isInWishlist(movie.id)"
+              [style.color]="isInWishlist(movie.id) ? '#ffd700' : 'black'"
+              (click)="toggleWishlist(movie, $event)"
+            ></i>
           </div>
         </div>
       </div>
