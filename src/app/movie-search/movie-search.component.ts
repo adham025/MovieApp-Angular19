@@ -3,6 +3,7 @@ import { ActivatedRoute, RouterModule } from '@angular/router';
 import { SearchServiceService } from '../service/search-service.service';
 import { environment } from '../../environments/environment';
 import { FormsModule } from '@angular/forms';
+import { CrudRequestService } from '../service/crud-request.service';
 
 @Component({
   selector: 'app-movie-search',
@@ -15,23 +16,29 @@ export class MovieSearchComponent {
   searchKey: string | null = '';
   movies: any[] = [];
 
-  constructor(private route: ActivatedRoute , private movieService: SearchServiceService) {}
+  constructor(private route: ActivatedRoute , private movieService: SearchServiceService, private crudService : CrudRequestService) {}
 
   ngOnInit() {
-    
+
     this.route.paramMap.subscribe(params => {
-      this.searchKey = params.get('searchKey');
-      if (this.searchKey) {
+      this.searchKey = params.get('searchKey') || '';
+      // if (this.searchKey) {
         this.searchMovies(this.searchKey);
-      }
+      // }
     });
   }
 
   searchMovies(searchKey: string) {
-    this.movieService.searchMovies(searchKey).subscribe(response => {
-      this.movies = response.results || [];
-      console.log('Movies:', this.movies);
-    });
+    if (searchKey.trim() === '') {
+      this.crudService.getMoviesList().subscribe(response => {
+        this.movies = response.results || [];
+      });
+    } else {
+      // Fetch search results
+      this.movieService.searchMovies(searchKey).subscribe(response => {
+        this.movies = response.results || [];
+      });
   }
+}
 
 }

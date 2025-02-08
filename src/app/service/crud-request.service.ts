@@ -17,6 +17,12 @@ export class CrudRequestService {
       `https://api.themoviedb.org/3/movie/now_playing?api_key=${environment.apiKey}&page=${page}&language=${language}`
     );
   }
+  getMoviesList(): Observable<any> {
+    const language = this.langService.getLanguage();
+    return this.http.get(
+      `https://api.themoviedb.org/3/movie/now_playing?api_key=${environment.apiKey}&language=${language}`
+    );
+  }
 
   getMovieDetails(id: number ) {
     const language = this.langService.getLanguage();
