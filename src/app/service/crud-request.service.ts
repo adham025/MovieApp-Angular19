@@ -8,10 +8,17 @@ import { environment } from '../../environments/environment';
 })
 export class CrudRequestService {
 
-  constructor(private http:HttpClient) { }
+constructor(private http:HttpClient) { }
 
-  getMoviesList(): Observable<any>{
-    return this.http.get(`https://api.themoviedb.org/3/movie/now_playing?api_key=${environment.apiKey}`)
+  getMoviesList(): Observable<any> {
+    return this.http.get(
+      `https://api.themoviedb.org/3/movie/now_playing?api_key=${environment.apiKey}`
+    );
+  }
+  getMoviesListByPagination(page: number): Observable<any> {
+    return this.http.get(
+      `https://api.themoviedb.org/3/movie/popular?api_key=${environment.apiKey}&page=${page}`
+    );
   }
 
   getMovieDetails(id:string){

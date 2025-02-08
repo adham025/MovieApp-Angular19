@@ -1,29 +1,72 @@
 import { Component } from '@angular/core';
 import { CrudRequestService } from '../../service/crud-request.service';
 import { RouterModule } from '@angular/router';
-import { CommonModule, DatePipe } from '@angular/common';
+import { CommonModule } from '@angular/common';
+import { MatPaginatorModule } from '@angular/material/paginator';
 
 @Component({
   selector: 'app-movies-list',
-  imports: [RouterModule, CommonModule],
+  standalone: true,
+  imports: [RouterModule, CommonModule, MatPaginatorModule],
   templateUrl: './movies-list.component.html',
-  styleUrls: ['./movies-list.component.css']
+  styleUrls: ['./movies-list.component.css'],
 })
 export class MoviesListComponent {
-movies : any[] = [];
-constructor(private _crudService: CrudRequestService){}
+  movies: any[] = [];
+  totalPages = 0;
+  pageSize = 18;
+  currentPage = 1;
+  maxVisiblePages = 6;
+  startIndex = 0;
+  visiblePages: number[] = [];
 
-ngOnInit() {
-  this._crudService.getMoviesList().subscribe({
-    next: (data) =>{
-    this.movies = data.results;
-    console.log(this.movies);
-  },
-  error: (err) => console.error('Error fetching movies:', err)
-})
-}
+  constructor(private _crudService: CrudRequestService) {}
 
-trackByFn(index: number, movie: any): number {
-  return movie.id;
-}
+  ngOnInit() {
+    this.loadMovies(this.currentPage);
+  }
+
+  loadMovies(page: number) {
+    this._crudService.getMoviesListByPagination(page).subscribe({
+      next: (data) => {
+        this.movies = data.results.slice(0, 18);
+        this.totalPages = data.total_pages;
+        this.currentPage = page;
+        this.updateVisiblePages();
+      },
+      error: (err) => console.error('Error fetching movies:', err),
+    });
+  }
+
+  updateVisiblePages() {
+    this.visiblePages = Array.from(
+      { length: Math.min(this.maxVisiblePages) },
+      (value, index) => index + 1 + this.startIndex
+    );
+  }
+
+  goToPage(page: number) {
+    if (page >= 1 && page <= this.totalPages) {
+      this.loadMovies(page);
+      this.currentPage = page;
+    }
+  }
+
+  nextPageSet() {
+    if (this.startIndex + this.maxVisiblePages < this.totalPages) {
+      this.startIndex += this.maxVisiblePages;
+      this.updateVisiblePages();
+    }
+  }
+
+  previousPageSet() {
+    if (this.startIndex > 0) {
+      this.startIndex = Math.max(0, this.startIndex - this.maxVisiblePages);
+      this.updateVisiblePages();
+    }
+  }
+
+  trackByFn(index: number, movie: any): number {
+    return movie.id;
+  }
 }

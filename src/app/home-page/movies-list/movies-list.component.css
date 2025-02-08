@@ -1,0 +1,6 @@
+.clicked,
+.custom-hover:hover {
+  background-color: #ffe354 !important;
+  border-color: #ffe354 !important;
+  color: black !important;
+}
