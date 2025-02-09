@@ -1,5 +1,4 @@
-## Have an amazing try 
-## [http://localhost:4200/movies](https://movie-app-angular19.vercel.app/movies)
+## Have an amazing try : [http://localhost:4200/movies](https://movie-app-angular19.vercel.app/movies)
 
 # MovieApp
 
