@@ -33,6 +33,8 @@ export class MoviesListComponent {
       next: (data) => {
         this.movies = data.results.slice(0, 18);
         this.totalPages = data.total_pages;
+        console.log(this.movies);
+
         this.currentPage = page;
         this.updateVisiblePages();
       },

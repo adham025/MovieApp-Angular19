@@ -26,7 +26,7 @@ export class MovieDetailsComponent {
       this.fetchRecommendations();
     });
   }
-  
+
   fetchMovieDetails() {
     this._crudRequestService.getMovieDetails(this.movieId).subscribe({
       next: (data) => {
@@ -34,7 +34,7 @@ export class MovieDetailsComponent {
       }
     });
   }
-  
+
   fetchRecommendations() {
     this._crudRequestService.getMovieRecommendations(this.movieId).subscribe({
       next: (data) => {
@@ -56,5 +56,5 @@ export class MovieDetailsComponent {
   isInWishlist(movieId: number): boolean {
     return this.wishlistService.isInWishlist(movieId);
   }
-  
+
 }

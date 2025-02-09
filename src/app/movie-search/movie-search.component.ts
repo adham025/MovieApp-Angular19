@@ -4,6 +4,7 @@ import { SearchServiceService } from '../service/search-service.service';
 import { environment } from '../../environments/environment';
 import { FormsModule } from '@angular/forms';
 import { CrudRequestService } from '../service/crud-request.service';
+import { AddToWishlistService } from '../service/add-to-wishlist.service';
 
 @Component({
   selector: 'app-movie-search',
@@ -16,7 +17,7 @@ export class MovieSearchComponent {
   searchKey: string | null = '';
   movies: any[] = [];
 
-  constructor(private route: ActivatedRoute , private movieService: SearchServiceService, private crudService : CrudRequestService) {}
+  constructor(private route: ActivatedRoute , private movieService: SearchServiceService, private wishlistService: AddToWishlistService ,private crudService : CrudRequestService) {}
 
   ngOnInit() {
 
@@ -39,6 +40,20 @@ export class MovieSearchComponent {
         this.movies = response.results || [];
       });
   }
+}
+
+toggleWishlist(movie: any, event: Event): void {
+  event.preventDefault();
+  if (this.isInWishlist(movie.id)) {
+    this.wishlistService.removeFromWishlist(movie.id);
+  } else {
+    this.wishlistService.addToWishlist(movie);
+  }
+}
+
+
+isInWishlist(movieId: number): boolean {
+  return this.wishlistService.isInWishlist(movieId);
 }
 
 }
