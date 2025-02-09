@@ -1,11 +1,12 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
+import { Movie } from '../types/types';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AddToWishlistService {
-  private wishlistItems: any[] = [];
+  private wishlistItems: Movie[] = [];
   private wishlistSubject = new BehaviorSubject<any[]>(this.wishlistItems);
 
   constructor() { }
@@ -19,20 +20,20 @@ export class AddToWishlistService {
     if (!existingMovie) {
       this.wishlistItems.push(movie);
       this.wishlistSubject.next([...this.wishlistItems]);
-      console.log('Movie added to wishlist:', movie);
+     
     }
   }
 
   removeFromWishlist(movieId: number): void {
     this.wishlistItems = this.wishlistItems.filter(movie => movie.id !== movieId);
     this.wishlistSubject.next([...this.wishlistItems]);
-    console.log('Movie removed from wishlist:', movieId);
+   
   }
 
   clearWishlist(): void {
     this.wishlistItems = [];
     this.wishlistSubject.next([...this.wishlistItems]);
-    console.log('Wishlist cleared');
+  
   }
 
   isInWishlist(movieId: number): boolean {

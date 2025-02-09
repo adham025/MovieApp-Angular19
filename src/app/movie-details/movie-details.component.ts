@@ -11,7 +11,7 @@ import { AddToWishlistService } from '../service/add-to-wishlist.service';
 })
 export class MovieDetailsComponent {
   movieId! : number;
-  movie: any
+  movie: any;
   recommendations: any
   constructor(
     private route: ActivatedRoute,

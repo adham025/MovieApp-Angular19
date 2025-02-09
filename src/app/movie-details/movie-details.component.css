@@ -12,5 +12,30 @@
     font-size: 20px; 
     color: black; 
   }
+
+  .row {
+    display: flex;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch; 
+    padding-bottom: 20px;
+  }
+  
+  .image-container {
+    overflow: hidden; 
+    display: inline-block;
+    
+  }
+  
+  .card-img-top {
+    transition: transform 0.3s ease-in-out;
+    transform-origin: center; 
+  
+  }
+  
+  .card-img-top:hover {
+    transform: scale(1.1); 
+    
+  }
   
   

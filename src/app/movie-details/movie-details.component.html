@@ -20,14 +20,19 @@
           </div>
       <p class="text-muted">{{ movie.release_date }}</p>
       <div class="d-flex align-items-center mb-3">
-        <div class="me-4">
-            <i class="fa-solid fa-star"></i>
-            <i class="fa-solid fa-star"></i>
-            <i class="fa-solid fa-star"></i>
-            <i class="fa-solid fa-star"></i>
-            <i class="fa-regular fa-star"></i>
+        <div class="me-4 d-flex gap-1">
+          @for(star of [1,2,3,4,5]; track $index){
+            @if((movie.vote_average / 2) >= star){
+              <i class="fa-solid fa-star fa-lg" style="color: #f4d84f"></i>
+            }
+            @if((movie.vote_average / 2) < star && (movie.vote_average / 2) >= (star - 0.5)){
+              <i class="fa-solid fa-star-half-stroke fa-lg" style="color: #f4d84f"></i>
+            }
+            @if((movie.vote_average / 2) < (star - 0.5)){
+              <i class="fa-regular fa-star fa-lg" style="color: #f4d84f"></i>
+            }
+          }
         </div>
-
         
         <span>{{ movie.vote_count }}</span>
       </div>
@@ -63,21 +68,24 @@
 
 <div class="container">
   <h2>Recommendations</h2>
-  <div class="row g-3">
-    @for(result of recommendations.results.slice(0, 6); track result.id){
+  <div class="row flex-nowrap overflow-auto g-3">
+    @for(result of recommendations.results; track result.id){
     <div class="col-md-2 col-sm-4 col-6">
       <div class="card h-100">
         <a           class="text-decoration-none"
         style="color: inherit"
         [routerLink]="['/movie', result.id]">
+        <div class="image-container">
         <img
         [src]="'https://image.tmdb.org/t/p/w500' + result.poster_path"
-        class="card-img-top"
+        class="card-img-top "
         alt="{{ result.title }}"
-      /></a>
+      />
+      </div>
+    </a>
  
         <div class="card-body p-2">
-          <h6 class="card-title text-truncate">{{ result.title }}</h6>
+          <h6 class="card-title text-truncate fw-bold">{{ result.title }}</h6>
           <p class="card-text small text-muted">{{ result.release_date }}</p>
         </div>
       </div>

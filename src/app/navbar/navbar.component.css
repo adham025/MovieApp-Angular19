@@ -3,3 +3,9 @@
     position: relative;
     top: -2px;
   }
+  .img-responsive{
+    width: 30px;
+    height: 30px;
+    margin-right: 5px;
+
+  }

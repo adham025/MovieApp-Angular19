@@ -4,6 +4,7 @@ import { CrudRequestService } from '../../service/crud-request.service';
 import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { MatPaginatorModule } from '@angular/material/paginator';
+import { Movie } from '../../types/types';
 
 @Component({
   selector: 'app-movies-list',
@@ -14,7 +15,7 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 })
 
 export class MoviesListComponent {
-  movies: any[] = [];
+  movies: Movie[] = [];
   totalPages = 0;
   pageSize = 18;
   currentPage = 1;

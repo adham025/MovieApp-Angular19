@@ -33,12 +33,35 @@
     <div class="col-md-6">
       <div class="card p-3 shadow-sm">
         <div class="row">
-          <div class="col-md-4">
-            <img
-              [src]="'https://image.tmdb.org/t/p/w500' + movie.poster_path"
-              [alt]="movie.title"
-              class="img-fluid"
-            />
+          <div class="col-md-4 position-relative">
+            <div class="poster-container">
+              <img
+                [src]="'https://image.tmdb.org/t/p/w500' + movie.poster_path"
+                [alt]="movie.title"
+                class="img-fluid"
+              />
+              <a
+              class="text-decoration-none"
+              style="color: inherit"
+              [routerLink]="['/movie', movie.id]"
+            >
+              <div class="eye-overlay pointer">
+                <svg
+                  width="34"
+                  height="34"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                  <circle cx="12" cy="12" r="3"></circle>
+                </svg>
+              </div>
+              </a>
+            </div>
           </div>
           <div class="col-md-8">
             <div class="d-flex justify-content-between align-items-center mt-2">
@@ -52,11 +75,17 @@
             <p class="text-muted">{{ movie.release_date | date }}</p>
             <div class="d-flex align-items-center mb-3">
               <div class="me-4 d-flex gap-1">
-                <i class="fa-solid fa-star fa-lg"></i>
-                <i class="fa-solid fa-star fa-lg"></i>
-                <i class="fa-solid fa-star fa-lg"></i>
-                <i class="fa-solid fa-star fa-lg"></i>
-                <i class="fa-regular fa-star fa-lg"></i>
+                @for(star of [1,2,3,4,5]; track $index){
+                  @if((movie.vote_average / 2) >= star){
+                    <i class="fa-solid fa-star fa-lg" style="color: #f4d84f"></i>
+                  }
+                  @if((movie.vote_average / 2) < star && (movie.vote_average / 2) >= (star - 0.5)){
+                    <i class="fa-solid fa-star-half-stroke fa-lg" style="color: #f4d84f"></i>
+                  }
+                  @if((movie.vote_average / 2) < (star - 0.5)){
+                    <i class="fa-regular fa-star fa-lg" style="color: #f4d84f"></i>
+                  }
+                }
               </div>
 
               <span>{{ movie.vote_count }}</span>
