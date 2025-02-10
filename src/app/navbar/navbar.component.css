@@ -22,3 +22,7 @@
   .img_color{
     filter: invert(100%);
   }
+  .active_link {
+    font-weight: bold;
+    color: orange;
+  }

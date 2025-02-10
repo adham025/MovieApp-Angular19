@@ -1,13 +1,13 @@
 import { AccLangService } from './../service/acc-lang.service';
 import { Component } from '@angular/core';
-import { Router, RouterLink } from '@angular/router';
+import { Router, RouterLink, RouterLinkActive } from '@angular/router';
 import { map, Observable } from 'rxjs';
 import { AddToWishlistService } from '../service/add-to-wishlist.service';
 import { CommonModule, Location } from '@angular/common';
 
 @Component({
   selector: 'app-navbar',
-  imports: [RouterLink,CommonModule],
+  imports: [RouterLink,CommonModule,RouterLinkActive],
   templateUrl: './navbar.component.html',
   styleUrl: './navbar.component.css',
 })
@@ -43,7 +43,7 @@ export class NavbarComponent {
   //   window.onscroll = ()=>{
   //     console.log(window.scrollY > 50);
   //     if(window.scrollY > 50){
-  //       if(navbar && img_color && bars) { 
+  //       if(navbar && img_color && bars) {
   //         navbar.style.background = "white";
   //         navbar.classList.add("active");
   //         bars.classList.replace("text-white","text-dark");
@@ -51,7 +51,7 @@ export class NavbarComponent {
   //       }
   //     }else{
   //       if(navbar && img_color && bars) {
-          
+
   //         if(window.innerWidth < 768){
   //           navbar.classList.add("active");
   //           navbar.style.background = "transparent";
@@ -64,12 +64,12 @@ export class NavbarComponent {
   //           img_color.style.filter = "invert(0%)";
   //           bars.classList.replace("text-dark","text-white");
   //         }
-          
+
 
   //       }
   //     }
   //   }
-    
+
   // }
 
   changeLanguage(lang: string) {
@@ -89,7 +89,7 @@ export class NavbarComponent {
 
   handleClose(){
     let nav = document.getElementById("nav-header");
-    console.log("closed");  
+    console.log("closed");
     if (!nav) return;
     nav.style.right = nav.style.right === '-50%' ? '0%' : '-50%';
   }
@@ -100,5 +100,5 @@ export class NavbarComponent {
     if (!nav) return;
     nav.style.right = nav.style.right === '50%' ? '0%' : '-50%';
   }
-  
+
 }
