@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { Router, RouterLink } from '@angular/router';
-import { SearchServiceService } from '../../service/search-service.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-hero-section',

@@ -4,7 +4,12 @@
     Millions of movies, TV shows and people to discover. Explore now.
   </p>
   <div class="position-relative">
-    <input [(ngModel)]="searchKey" class="form-control inpt text-black-50" placeholder="Search for a movie">
+    <input
+      [(ngModel)]="searchKey"
+      class="form-control inpt text-black-50"
+      placeholder="Search for a movie"
+      (keydown.enter)="searchMovies()"
+    />
     <button class="btn btn-primary mx-3 searchBtn" (click)="searchMovies()">
       <i class="fa-solid fa-magnifying-glass"></i>
     </button>

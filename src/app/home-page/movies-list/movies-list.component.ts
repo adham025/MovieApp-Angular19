@@ -3,13 +3,12 @@ import { Component } from '@angular/core';
 import { CrudRequestService } from '../../service/crud-request.service';
 import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
-import { MatPaginatorModule } from '@angular/material/paginator';
 import { Movie } from '../../types/types';
 
 @Component({
   selector: 'app-movies-list',
   standalone: true,
-  imports: [RouterModule, CommonModule, MatPaginatorModule],
+  imports: [RouterModule, CommonModule],
   templateUrl: './movies-list.component.html',
   styleUrls: ['./movies-list.component.css'],
 })
