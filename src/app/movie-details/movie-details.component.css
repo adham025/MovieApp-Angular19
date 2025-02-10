@@ -1,38 +1,33 @@
 .btn-outline-primary {
-    color: #212529 !important; 
-    border-color: #212529 !important; 
+    color: #212529 !important;
+    border-color: #212529 !important;
   }
-  
+
   .btn-outline-primary:hover {
-    background-color: #ffe354 !important; 
-    border-color: #ffe354 !important; 
-    color: #212529 !important; 
+    background-color: #ffe354 !important;
+    border-color: #ffe354 !important;
+    color: #212529 !important;
   }
   .star-rating {
-    font-size: 20px; 
-    color: black; 
+    font-size: 20px;
+    color: black;
   }
 
   .row {
-    display: flex; 
+    display: flex;
     padding-bottom: 20px;
   }
-  
+
   .image-container {
-    overflow: hidden; 
     display: inline-block;
-    
   }
-  
+
   .card-img-top {
     transition: transform 0.3s ease-in-out;
-    transform-origin: center; 
-  
+    transform-origin: center;
   }
-  
+
   .card-img-top:hover {
-    transform: scale(1.1); 
-    
+    transform: scale(1.1);
   }
-  
-  
+
