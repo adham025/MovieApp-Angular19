@@ -4,7 +4,7 @@ button {
   border: none;
 }
 .bg_home{
-  background: linear-gradient(rgba(0,0,0,.4),rgba(0,0,0,0)),url(../../../../public/slide03.jpg);
+  background: linear-gradient(rgba(0,0,0,.4), rgba(0,0,0,0)), url('../../../assets/images/slide.jpg');
   background-position: top; 
   background-size: cover;
   width: 100%;
@@ -13,6 +13,7 @@ button {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  align-items: center; 
 }
 .searchBtn{
   position: absolute;
