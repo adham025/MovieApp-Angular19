@@ -87,7 +87,7 @@
 
 <div class="container">
   <h2>Recommendations</h2>
-  <div class="row g-3">
+  <div class="scroll-container d-flex overflow-auto mt-4">
     @for(result of recommendations.results; track result.id){
     <div class="col-md-2 col-sm-4 col-6">
       <div class="card h-100" style="border: none">
@@ -162,3 +162,4 @@
     }
   </div>
 </div>
+<!-- </div> -->
