@@ -4,11 +4,11 @@ button {
   border: none;
 }
 .bg_home{
-  background: url(../../../../public/slide03.jpg);
+  background: linear-gradient(rgba(0,0,0,.4),rgba(0,0,0,0)),url(../../../../public/slide03.jpg);
   background-position: top; 
   background-size: cover;
   width: 100%;
-  height: 95vh;
+  height: 100vh;
   display: flex;
   flex-direction: column;
   justify-content: center;

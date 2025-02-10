@@ -8,6 +8,18 @@
     height: 30px;
     margin-right: 5px;
   }
-  .img_color{
-    filter: invert(100%);
+  .navbar{
+    position: fixed;
+    z-index: 1212;
+    width: 100%;
+    transition: .5s ease-in-out;
   }
+  .active a,
+  .active button{
+    color: #000!important;
+  }
+  .navbar a{
+    color: #FFF;
+    font-size: 17px;
+  }
+  
