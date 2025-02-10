@@ -9,17 +9,16 @@
     margin-right: 5px;
   }
   .navbar{
-    position: fixed;
-    z-index: 1212;
-    width: 100%;
-    transition: .5s ease-in-out;
   }
   .active a,
   .active button{
     color: #000!important;
   }
-  .navbar a{
-    color: #FFF;
+  .navbar a
+  .navbar button{
+    color: #000;
     font-size: 17px;
   }
-  
+  .img_color{
+    filter: invert(100%);
+  }

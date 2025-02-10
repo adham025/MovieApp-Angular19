@@ -1,5 +1,5 @@
 <div class="">
-  <nav id="navbar" class="navbar py-3 navbar-expand">
+  <nav id="navbar" class="navbar py-2 navbar-expand">
     <div class="container-fluid mx-3">
       <span class="navbar-brand pointer fw-bold" routerLink="movies">
         <img id="img_color" class="img_color" src="./logo-1x.png" alt="">
@@ -18,7 +18,7 @@
               <button
                 id="btnGroupDrop1"
                 type="button"
-                class="btn  dropdown-toggle text-white"
+                class="btn  dropdown-toggle text-dark"
                 data-bs-toggle="dropdown"
                 aria-expanded="false"
               >
@@ -53,7 +53,7 @@
             <div class="d-flex align-items-center position-relative">
               <i class="fa-solid fa-heart me-2"></i>
               <span 
-                class="badge bg-danger text-white rounded-pill ms-1" 
+                class="badge bg-warning text-dark rounded-pill ms-1" 
                 style="font-size: 0.6rem; padding: 2px 5px; position: relative; top: -8px; left: -8px;"
               >
                 {{ wishlistCount$ | async }}

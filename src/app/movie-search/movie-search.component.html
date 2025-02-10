@@ -1,12 +1,12 @@
 <div class="container my-5">
   
-  <div class="d-flex flex-column flex-sm-row mb-2 align-items-stretch gap-1">
+  <div class="d-flex mb-2 ">
       <input
         class="form-control text-black-50"
         placeholder="Search and explore...."
         [(ngModel)]="searchKey"
       />
-      <button class="btn btn-warning px-3 navbar mx-3" [routerLink]="['/search', searchKey]">
+      <button class="btn btn-warning  mx-3" [routerLink]="['/search', searchKey]">
         Search
       </button>
     </div>
