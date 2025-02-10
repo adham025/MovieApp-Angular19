@@ -2,17 +2,20 @@ import { Component } from '@angular/core';
 import { CrudRequestService } from '../service/crud-request.service';
 import { ActivatedRoute, RouterModule } from '@angular/router';
 import { AddToWishlistService } from '../service/add-to-wishlist.service';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-movie-details',
-  imports: [RouterModule],
+  imports: [RouterModule,CommonModule],
   templateUrl: './movie-details.component.html',
   styleUrl: './movie-details.component.css',
 })
 export class MovieDetailsComponent {
   movieId! : number;
   movie: any;
-  recommendations: any
+  recommendations: any;
+  vote : number = 0;
+
   constructor(
     private route: ActivatedRoute,
     private _crudRequestService: CrudRequestService,
@@ -55,6 +58,11 @@ export class MovieDetailsComponent {
 
   isInWishlist(movieId: number): boolean {
     return this.wishlistService.isInWishlist(movieId);
+  }
+
+
+  getBackgroundColor(vote:number): string {
+    return this.vote > 7 ? 'green' : 'yellow';
   }
 
 }

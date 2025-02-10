@@ -14,10 +14,7 @@
   }
 
   .row {
-    display: flex;
-    flex-wrap: nowrap;
-    overflow-x: auto;
-    -webkit-overflow-scrolling: touch; 
+    display: flex; 
     padding-bottom: 20px;
   }
   

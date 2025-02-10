@@ -42,15 +42,15 @@
         <span class="btn m-2 text-dark rounded-pill me-1 text-center" style="background-color: #ffe354;">{{ genre.name }}</span>
         }
       </div>
-      <p class="d-flex gap-3">
+      <p class="d-flex flex-wrap gap-3">
         <strong>Duration:</strong> {{ movie.runtime }} Min.
-        <strong>Languages:</strong> {{ movie.original_title }}
+        <strong>Languages:</strong> {{ movie.spoken_languages[0].english_name }}
       </p>
       @for(company of movie.production_companies; track company.id){ @if(company.logo_path !== null){
       <img
         [src]="'https://image.tmdb.org/t/p/w500' + company.logo_path"
         class="card-img-top m-4"
-        alt="The Good Doctor"
+        alt="The Good Doctor" 
         style="width: 80px"
       />
       } }
@@ -68,19 +68,64 @@
 
 <div class="container">
   <h2>Recommendations</h2>
-  <div class="row flex-nowrap overflow-auto g-3">
+  <div class="row g-3">
     @for(result of recommendations.results; track result.id){
     <div class="col-md-2 col-sm-4 col-6">
       <div class="card h-100">
-        <a           class="text-decoration-none"
+        <a class="text-decoration-none"
         style="color: inherit"
         [routerLink]="['/movie', result.id]">
-        <div class="image-container">
-        <img
+        
+        <div class="image-container position-relative">
+          <img
         [src]="'https://image.tmdb.org/t/p/w500' + result.poster_path"
         class="card-img-top "
-        alt="{{ result.title }}"
-      />
+        alt="{{ result.title }}"/>
+        <div  class="circle-wrapper">
+          <svg
+            class="CircularProgressbar"
+            viewBox="0 0 100 100"
+            data-test-id="CircularProgressbar"
+          >
+            <path 
+              class="CircularProgressbar-trail"
+              d="
+                M 50,50
+                m 0,-46
+                a 46,46 0 1 1 0,92
+                a 46,46 0 1 1 0,-92
+              "
+              stroke-width="8"
+              fill-opacity="0"
+              style="stroke-dasharray: 430px, 430px; stroke-dashoffset: 0px"
+            ></path>
+            <path
+            [ngStyle]="{ 'stroke': getBackgroundColor(result.vote_average) }"
+              class="CircularProgressbar-path"
+              d="
+                M 50,50
+                m 0,-46
+                a 46,46 0 1 1 0,92
+                a 46,46 0 1 1 0,-92
+              "
+              stroke-width="8"
+              fill-opacity="0"
+              [ngStyle]="{
+                'stroke-dasharray': (result.vote_average / 10) * 415 + 'px, 415px',
+                'stroke-dashoffset': '98.269px',
+                'stroke': result.vote_average > 7 ? '#66BB6A' : 'yellow'
+              }">
+              </path>
+            <text
+              class="CircularProgressbar-text"
+              x="25"
+              y="58"
+              style="font-size: 30px"
+            >
+              {{ result.vote_average | number: '1.2-2' }}
+            </text>
+          </svg>
+        </div>
       </div>
     </a>
  

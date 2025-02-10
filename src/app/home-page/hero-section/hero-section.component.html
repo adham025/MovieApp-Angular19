@@ -1,19 +1,12 @@
-<div class="container py-4 px-5 mb-5" style="background-color: #f2f0f0">
-  <h2 class="mb-4">Welcome to our movie app</h2>
+<div class="py-4 text-center text-white px-5 mb-5 bg_home">
+  <h1 class="mb-2 title text-uppercase">Welcome to our movie app</h1>
   <p class="mb-4">
     Millions of movies, TV shows and people to discover. Explore now.
   </p>
-  <div class="d-flex flex-column flex-sm-row align-items-stretch gap-2">
-    <!-- <input
-      class="form-control text-black-50"
-      placeholder="Search and explore...."
-      [(ngModel)]="searchKey"
-    />
-    <button class="btn btn-primary mx-3" [routerLink]="['/search', searchKey]">
-      Search
-    </button> -->
-
-    <input [(ngModel)]="searchKey" class="form-control text-black-50" placeholder="Search for a movie">
-    <button class="btn btn-primary mx-3" (click)="searchMovies()">Search</button>
+  <div class="position-relative">
+    <input [(ngModel)]="searchKey" class="form-control inpt text-black-50" placeholder="Search for a movie">
+    <button class="btn btn-primary mx-3 searchBtn" (click)="searchMovies()">
+      <i class="fa-solid fa-magnifying-glass"></i>
+    </button>
   </div>
 </div>

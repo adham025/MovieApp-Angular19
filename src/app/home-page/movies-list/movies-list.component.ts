@@ -22,6 +22,7 @@ export class MoviesListComponent {
   maxVisiblePages = 6;
   startIndex = 0;
   visiblePages: number[] = [];
+  vote : number = 0
 
   constructor(private _crudService: CrudRequestService,private wishlistService: AddToWishlistService) {}
 
@@ -87,6 +88,10 @@ export class MoviesListComponent {
 
   isInWishlist(movieId: number): boolean {
     return this.wishlistService.isInWishlist(movieId);
+  }
+
+  getBackgroundColor(vote:number): string {
+    return this.vote > 7 ? 'green' : 'yellow';
   }
 
 

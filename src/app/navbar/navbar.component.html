@@ -1,12 +1,14 @@
 <nav class="navbar navbar-expand">
   <div class="container-fluid mx-3">
-    <img src="/movies-app.png" alt="Placeholder" class="img-responsive "/>
-    <span class="navbar-brand pointer fw-bold" routerLink="movies">Movie App</span>
+    <span class="navbar-brand pointer fw-bold" routerLink="movies">
+      <img class="img_color" src="./logo-1x.png" alt="">
+    </span>
     <div
       class="collapse navbar-collapse justify-content-end"
       id="navbarNavAltMarkup"
     >
-      <div class="navbar-nav">
+      <div id="nav-header" style="right: -50%;" class="navbar-nav nav-header">
+        <div (click)="handleClose()" class="close">x</div>
         <a class="nav-link pointer" routerLink="movies">Home</a>
         <a class="nav-link pointer" routerLink="/login">Login</a>
         <a class="nav-link pointer" routerLink="/registration">Register</a>
@@ -58,6 +60,10 @@
           </div>
           Watchlist
         </a>
+
+      </div>
+      <div id="bars">
+        <i (click)="handleClose()" class="fa-solid fa-bars"></i>
       </div>
     </div>
   </div>

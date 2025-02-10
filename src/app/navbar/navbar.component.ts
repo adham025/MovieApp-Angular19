@@ -36,4 +36,19 @@ export class NavbarComponent {
     // window.location.reload();
 
   }
+
+  handleClose(){
+    let nav = document.getElementById("nav-header");
+    console.log("closed");  
+    if (!nav) return;
+    nav.style.right = nav.style.right === '-50%' ? '0%' : '-50%';
+  }
+
+  handleBars(){
+    let nav = document.getElementById("nav-header");
+
+    if (!nav) return;
+    nav.style.right = nav.style.right === '50%' ? '0%' : '-50%';
+  }
+  
 }

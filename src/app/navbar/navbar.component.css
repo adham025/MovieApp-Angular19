@@ -7,5 +7,7 @@
     width: 30px;
     height: 30px;
     margin-right: 5px;
-
+  }
+  .img_color{
+    filter: invert(100%);
   }
