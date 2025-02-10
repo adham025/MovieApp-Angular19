@@ -23,7 +23,7 @@ button {
 .inpt{
   width: 400px;
 }
-.inpt::placeholder{
+.inpt::placeholder{ 
   font-size: 14px;
 }
 .title{
